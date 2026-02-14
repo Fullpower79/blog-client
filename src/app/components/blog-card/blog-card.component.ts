@@ -6,27 +6,7 @@ import { Blog } from '../../models/blog.model';
   selector: 'app-blog-card',
   standalone: true,
   imports: [CommonModule],
-  template: `
-    <div class="card">
-      <h2>{{ blog.title }}</h2>
-
-      <img
-        *ngIf="blog.image"
-        [src]="imageUrl"
-        alt="Blog image"
-      />
-
-      <p>{{ blog.content }}</p>
-
-      <div class="tags">
-        <span *ngFor="let tag of blog.tags">
-          #{{ tag }}
-        </span>
-      </div>
-
-      <small>{{ blog.createdAt | date }}</small>
-    </div>
-  `,
+  templateUrl: `./blog-card.html`,
   styles: [`
     .card { border:1px solid #ddd; padding:1rem; margin-bottom:1rem; }
     img { max-width:100%; margin:1rem 0; }

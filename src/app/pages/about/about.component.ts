@@ -4,19 +4,6 @@ import { CommonModule } from '@angular/common';
 @Component({
   standalone: true,
   imports: [CommonModule],
-  template: `
-    <h1>About Me</h1>
-
-    <p>
-      Hi, I’m [Your Name]. I’m passionate about web development and modern
-      technologies.
-    </p>
-
-    <h2>Internship</h2>
-    <p>
-      I am currently doing my interim at [Company Name], where I work on
-      full-stack web development projects using Angular and Node.js.
-    </p>
-  `
+  templateUrl: './about.html'
 })
 export class AboutComponent {}

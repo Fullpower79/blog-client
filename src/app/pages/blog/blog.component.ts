@@ -9,24 +9,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   standalone: true,
   imports: [CommonModule, BlogCardComponent, BlogFormComponent, FormsModule],
-  template: `
-    <h1>Blog Posts</h1>
-
-    <div class="filter">
-      <input
-        placeholder="Filter by tag"
-        [(ngModel)]="tagFilter"
-      />
-      <button (click)="loadBlogs()">Filter</button>
-      <button (click)="clearFilter()">Clear</button>
-    </div>
-
-    <app-blog-form (blogCreated)="onBlogCreated()"></app-blog-form>
-
-    <div *ngFor="let blog of blogs">
-      <app-blog-card [blog]="blog"></app-blog-card>
-    </div>
-  `
+  templateUrl: './blog.html'
 })
 export class BlogComponent implements OnInit {
 
@@ -36,7 +19,7 @@ export class BlogComponent implements OnInit {
   constructor(private blogService: BlogService) {}
 
   ngOnInit(): void {
-    this.loadBlogs();
+    this.loadBlogs(); // load all blogs immediately
   }
 
   loadBlogs() {
@@ -51,6 +34,7 @@ export class BlogComponent implements OnInit {
   }
 
   onBlogCreated() {
-    this.loadBlogs();
+    this.tagFilter = ''; // optional: clear filter
+    this.loadBlogs();    // refresh the blog list
   }
 }

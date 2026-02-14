@@ -7,40 +7,7 @@ import { BlogService } from '../../services/blog.service';
   selector: 'app-blog-form',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  template: `
-    <h2>Create New Blog</h2>
-
-    <form (ngSubmit)="submit()">
-      <input
-        type="text"
-        placeholder="Title"
-        [(ngModel)]="title"
-        name="title"
-        required
-      />
-
-      <textarea
-        placeholder="Content"
-        [(ngModel)]="content"
-        name="content"
-        required
-      ></textarea>
-
-      <input
-        type="text"
-        placeholder="Tags (comma separated)"
-        [(ngModel)]="tags"
-        name="tags"
-      />
-
-      <input
-        type="file"
-        (change)="onFileSelected($event)"
-      />
-
-      <button type="submit">Publish</button>
-    </form>
-  `
+  templateUrl: `./blog-form.html`
 })
 export class BlogFormComponent {
 
