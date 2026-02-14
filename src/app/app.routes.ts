@@ -1,3 +1,11 @@
 import { Routes } from '@angular/router';
+import { BlogComponent } from './pages/blog/blog.component';
+import { LandingComponent } from './pages/landing/landing.component';
+import { AboutComponent } from './pages/about/about.component';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+  { path: '', component: LandingComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'blogs', component: BlogComponent },
+  { path: '**', redirectTo: '' }
+];
