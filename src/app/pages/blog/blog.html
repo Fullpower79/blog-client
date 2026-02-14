@@ -4,6 +4,7 @@
       <input
         placeholder="Filter by tag"
         [(ngModel)]="tagFilter"
+        (input)="loadBlogs()"
       />
       <button (click)="loadBlogs()">Filter</button>
       <button (click)="clearFilter()">Clear</button>
