@@ -19,12 +19,13 @@ export class BlogComponent implements OnInit {
   constructor(private blogService: BlogService) {}
 
   ngOnInit(): void {
-    this.loadBlogs(); // load all blogs immediately
+    this.loadBlogs();
   }
 
-  loadBlogs() {
-    this.blogService.getBlogs(this.tagFilter).subscribe(data => {
-      this.blogs = data;
+  loadBlogs(): void {
+    this.blogService.getBlogs(this.tagFilter).subscribe({
+      next: data => this.blogs = data,
+      error: err => console.error('Error loading blogs', err)
     });
   }
 
@@ -34,7 +35,7 @@ export class BlogComponent implements OnInit {
   }
 
   onBlogCreated() {
-    this.tagFilter = ''; // optional: clear filter
-    this.loadBlogs();    // refresh the blog list
+    this.tagFilter = ''; 
+    this.loadBlogs();    
   }
 }

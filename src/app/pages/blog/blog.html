@@ -1,17 +1,14 @@
-    <h1>Blog Posts</h1>
+<h1>Blog Posts</h1>
 
-    <div class="filter">
-      <input
-        placeholder="Filter by tag"
-        [(ngModel)]="tagFilter"
-        (input)="loadBlogs()"
-      />
-      <button (click)="loadBlogs()">Filter</button>
-      <button (click)="clearFilter()">Clear</button>
-    </div>
+<div class="filter">
+    <input placeholder="Filter by tag" [(ngModel)]="tagFilter" (input)="loadBlogs()" />
+    <button (click)="loadBlogs()">Filter</button>
+    <button (click)="clearFilter()">Clear</button>
+</div>
 
-    <app-blog-form (blogCreated)="onBlogCreated()"></app-blog-form>
+<app-blog-form (blogCreated)="onBlogCreated()"></app-blog-form>
 
-    <div *ngFor="let blog of blogs">
-      <app-blog-card [blog]="blog"></app-blog-card>
-    </div>
+<div class="blog-list">
+    <app-blog-card *ngFor="let blog of blogs" [blog]="blog">
+    </app-blog-card>
+</div>
