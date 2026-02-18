@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BlogService } from '../../services/blog.service';
 import { Blog } from '../../models/blog.model';
@@ -16,7 +16,7 @@ export class BlogComponent implements OnInit {
   blogs: Blog[] = [];
   tagFilter = '';
 
-  constructor(private blogService: BlogService) {}
+  constructor(private blogService: BlogService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.loadBlogs();
@@ -24,7 +24,10 @@ export class BlogComponent implements OnInit {
 
   loadBlogs(): void {
     this.blogService.getBlogs(this.tagFilter).subscribe({
-      next: data => this.blogs = data,
+      next: data => {
+        this.blogs = data;
+        this.cdr.detectChanges();
+      },
       error: err => console.error('Error loading blogs', err)
     });
   }
