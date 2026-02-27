@@ -1,5 +1,9 @@
 <h1>Blog Posts</h1>
 
+<div class="actions">
+    <button (click)="loadBlogs()">Load blogs</button>
+</div>
+
 <div class="filter">
     <input placeholder="Filter by tag" [(ngModel)]="tagFilter" (input)="loadBlogs()" />
     <button (click)="loadBlogs()">Filter</button>
@@ -9,6 +13,9 @@
 <app-blog-form (blogCreated)="onBlogCreated()"></app-blog-form>
 
 <div class="blog-list">
+    <p *ngIf="loading">Loading blogs…</p>
+    <p class="error" *ngIf="!loading && errorMessage">{{ errorMessage }}</p>
+    <p *ngIf="!loading && !errorMessage && blogs.length === 0">No blogs to display. Use the "Load blogs" button or add a tag filter.</p>
     <app-blog-card *ngFor="let blog of blogs" [blog]="blog">
     </app-blog-card>
 </div>
