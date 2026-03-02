@@ -54,6 +54,25 @@ ng e2e
 
 Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 
+## Cloudinary Image Uploads
+
+The application allows blog posts to include an image. Images are uploaded from the Angular frontend to the Express backend, which in turn pushes them to Cloudinary.
+
+1. Create a free Cloudinary account and grab your **cloud name**, **API key** and **API secret**.
+2. Add those values to the backend `.env` file (see `blog-server/.env`) under the variables `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY` and `CLOUDINARY_API_SECRET`.
+3. Install the new dependencies in the server project:
+
+   ```bash
+   cd blog-server
+   npm install cloudinary multer-storage-cloudinary
+   ```
+
+4. Start the server (`npm start` from `blog-server`) and verify that new blog posts with images are stored and the returned `imageUrl` field points to the hosted asset.
+
+You can remove `src/app/config/cloudinary.js` from the client if you prefer; uploads happen entirely on the server.
+
+---
+
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

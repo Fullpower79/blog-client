@@ -15,9 +15,5 @@ import { Blog } from '../../models/blog.model';
 })
 export class BlogCardComponent {
 
-  @Input() blog!: Blog;
-
-  get imageUrl() {
-    return `https://your-backend-url.onrender.com/uploads/${this.blog.image}`;
-  }
+  @Input({required: true}) blog!: Blog;
 }

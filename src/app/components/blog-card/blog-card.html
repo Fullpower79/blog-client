@@ -1,19 +1,13 @@
 <div class="card">
-      <h2>{{ blog.title }}</h2>
+  <h2>{{ blog.title }}</h2>
 
-      <img
-        *ngIf="blog.image"
-        [src]="imageUrl"
-        alt="Blog image"
-      />
+  <img *ngIf="blog.imageUrl" [src]="blog.imageUrl" alt="Blog Image" />
 
-      <p>{{ blog.content }}</p>
+  <p>{{ blog.content }}</p>
 
-      <div class="tags">
-        <span *ngFor="let tag of blog.tags">
-          #{{ tag }}
-        </span>
-      </div>
+  <div class="tags">
+    <span *ngFor="let tag of blog.tags" class="tag">{{ tag }}</span>
+  </div>
 
-      <small>{{ blog.createdAt | date }}</small>
-    </div>
+  <small>{{ blog.createdAt | date }}</small>
+</div>
